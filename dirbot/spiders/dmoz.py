@@ -1,10 +1,8 @@
-from scrapy.spider import Spider
-from scrapy.selector import Selector
-
+import scrapy
 from dirbot.items import Website
 
 
-class DmozSpider(Spider):
+class DmozSpider(scrapy.Spider):
     name = "dmoz"
     allowed_domains = ["dmoz.org"]
     start_urls = [
@@ -20,8 +18,7 @@ class DmozSpider(Spider):
         @url http://www.dmoz.org/Computers/Programming/Languages/Python/Resources/
         @scrapes name
         """
-        sel = Selector(response)
-        sites = sel.xpath('//ul[@class="directory-url"]/li')
+        sites = response.xpath('//ul[@class="directory-url"]/li')
         items = []
 
         for site in sites:

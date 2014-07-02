@@ -1,4 +1,4 @@
-from scrapy.item import Item, Field
+from scrapy import Item, Field
 
 
 class Website(Item):
